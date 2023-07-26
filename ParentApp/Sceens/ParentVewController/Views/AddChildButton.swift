@@ -54,6 +54,7 @@ private extension AddChildButton {
         layer.borderColor = UIColor.blue.cgColor
         layer.borderWidth = 1
         layer.cornerRadius = 16
+        makeSystem(self)
         
         title.textColor = .blue
         title.font = .systemFont(ofSize: 24)
