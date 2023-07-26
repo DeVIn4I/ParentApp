@@ -8,11 +8,10 @@
 import UIKit
 
 class ParentViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .cyan
+        view.backgroundColor = .white
     }
 
 
