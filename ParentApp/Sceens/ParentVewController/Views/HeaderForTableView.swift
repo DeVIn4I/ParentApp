@@ -14,6 +14,8 @@ final class HeaderForTableView: BaseView {
     
     var maxChildCount = 5
     
+    var addChildAction: (() -> Void)?
+    
     private lazy var parentLabel: UILabel = {
         let label = UILabel()
         label.text = "Персональные данные"
@@ -74,11 +76,11 @@ final class HeaderForTableView: BaseView {
             infoChildStackView.leadingAnchor.constraint(equalTo: parentLabel.leadingAnchor),
             infoChildStackView.trailingAnchor.constraint(equalTo: parentLabel.trailingAnchor),
             infoChildStackView.heightAnchor.constraint(equalToConstant: 40),
-            infoChildStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 10),
+            infoChildStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 10)
         ])
     }
     
     @objc func didTapAddChildButton() {
-        print("Child button tapped")
+        addChildAction?()
     }
 }

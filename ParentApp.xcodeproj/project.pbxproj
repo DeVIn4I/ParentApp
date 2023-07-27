@@ -19,6 +19,7 @@
 		8655BB162A71BE6E00BC31B6 /* HeaderForTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8655BB152A71BE6E00BC31B6 /* HeaderForTableView.swift */; };
 		8655BB182A72298100BC31B6 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8655BB172A72298100BC31B6 /* UIColor+Extension.swift */; };
 		8655BB1A2A722AEF00BC31B6 /* ChildCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8655BB192A722AEF00BC31B6 /* ChildCell.swift */; };
+		86CE49612A72823000F8B2B9 /* ChildModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE49602A72823000F8B2B9 /* ChildModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		8655BB152A71BE6E00BC31B6 /* HeaderForTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForTableView.swift; sourceTree = "<group>"; };
 		8655BB172A72298100BC31B6 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		8655BB192A722AEF00BC31B6 /* ChildCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCell.swift; sourceTree = "<group>"; };
+		86CE49602A72823000F8B2B9 /* ChildModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChildModel.swift; path = ParentApp/Sceens/ParentVewController/ChildModel.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 		8655BB082A71AF8A00BC31B6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				86CE49602A72823000F8B2B9 /* ChildModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8655BAF42A71AEC600BC31B6 /* ParentViewController.swift in Sources */,
+				86CE49612A72823000F8B2B9 /* ChildModel.swift in Sources */,
 				8655BAF02A71AEC600BC31B6 /* AppDelegate.swift in Sources */,
 				8655BB1A2A722AEF00BC31B6 /* ChildCell.swift in Sources */,
 				8655BAF22A71AEC600BC31B6 /* SceneDelegate.swift in Sources */,
