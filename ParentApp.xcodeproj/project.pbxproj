@@ -18,6 +18,7 @@
 		8655BB142A71B58B00BC31B6 /* AddChildButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8655BB132A71B58B00BC31B6 /* AddChildButton.swift */; };
 		8655BB162A71BE6E00BC31B6 /* HeaderForTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8655BB152A71BE6E00BC31B6 /* HeaderForTableView.swift */; };
 		8655BB182A72298100BC31B6 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8655BB172A72298100BC31B6 /* UIColor+Extension.swift */; };
+		8655BB1A2A722AEF00BC31B6 /* ChildCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8655BB192A722AEF00BC31B6 /* ChildCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		8655BB132A71B58B00BC31B6 /* AddChildButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChildButton.swift; sourceTree = "<group>"; };
 		8655BB152A71BE6E00BC31B6 /* HeaderForTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForTableView.swift; sourceTree = "<group>"; };
 		8655BB172A72298100BC31B6 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		8655BB192A722AEF00BC31B6 /* ChildCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				8655BB0D2A71B0CF00BC31B6 /* TextField.swift */,
 				8655BB132A71B58B00BC31B6 /* AddChildButton.swift */,
 				8655BB152A71BE6E00BC31B6 /* HeaderForTableView.swift */,
+				8655BB192A722AEF00BC31B6 /* ChildCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			files = (
 				8655BAF42A71AEC600BC31B6 /* ParentViewController.swift in Sources */,
 				8655BAF02A71AEC600BC31B6 /* AppDelegate.swift in Sources */,
+				8655BB1A2A722AEF00BC31B6 /* ChildCell.swift in Sources */,
 				8655BAF22A71AEC600BC31B6 /* SceneDelegate.swift in Sources */,
 				8655BB182A72298100BC31B6 /* UIColor+Extension.swift in Sources */,
 				8655BB0E2A71B0CF00BC31B6 /* TextField.swift in Sources */,

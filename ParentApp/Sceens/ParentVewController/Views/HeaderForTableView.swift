@@ -18,7 +18,6 @@ final class HeaderForTableView: BaseView {
         let label = UILabel()
         label.text = "Персональные данные"
         label.font = .boldSystemFont(ofSize: 20)
-        
         return label.withConstraints()
     }()
     
@@ -28,7 +27,6 @@ final class HeaderForTableView: BaseView {
         view.spacing = 10
         view.addArrangedSubview(parentName)
         view.addArrangedSubview(parentAge)
-        
         return view.withConstraints()
     }()
     
@@ -37,7 +35,6 @@ final class HeaderForTableView: BaseView {
         label.text = "Дети (макс. \(maxChildCount))"
         label.font = .boldSystemFont(ofSize: 18)
         label.textAlignment = .left
-        
         return label.withConstraints()
     }()
     
@@ -45,7 +42,6 @@ final class HeaderForTableView: BaseView {
        let button = AddChildButton()
         button.setTitle(" Добавить ребенка")
         button.addTarget(self, action: #selector(didTapAddChildButton), for: .touchUpInside)
-        
         return button.withConstraints()
     }()
     
@@ -55,7 +51,6 @@ final class HeaderForTableView: BaseView {
         view.addArrangedSubview(descChildLabel)
         view.addArrangedSubview(addChildButton)
         view.alignment = .fill
-        
         return view.withConstraints()
     }()
     
@@ -78,11 +73,10 @@ final class HeaderForTableView: BaseView {
             infoChildStackView.topAnchor.constraint(equalTo: infoParentStackView.bottomAnchor, constant: 10),
             infoChildStackView.leadingAnchor.constraint(equalTo: parentLabel.leadingAnchor),
             infoChildStackView.trailingAnchor.constraint(equalTo: parentLabel.trailingAnchor),
-            infoChildStackView.heightAnchor.constraint(equalToConstant: 40)
-        
+            infoChildStackView.heightAnchor.constraint(equalToConstant: 40),
+            infoChildStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 10),
         ])
     }
-    
     
     @objc func didTapAddChildButton() {
         print("Child button tapped")
