@@ -13,6 +13,7 @@ final class TextField: BaseView {
         let textField = UITextField()
         textField.font = .systemFont(ofSize: 18)
         textField.borderStyle = .none
+        textField.clearButtonMode = .whileEditing
         
         return textField.withConstraints()
     }()
@@ -35,8 +36,8 @@ final class TextField: BaseView {
         layer.borderWidth = 1
         layer.borderColor = UIColor.lightGray.cgColor
         
-        addSubview(textField)
         addSubview(placeholderLabel)
+        addSubview(textField)
     }
     
     override func constraintViews() {
@@ -45,14 +46,13 @@ final class TextField: BaseView {
             placeholderLabel.topAnchor.constraint(equalTo: topAnchor, constant: 4),
             placeholderLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             placeholderLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4),
+            placeholderLabel.bottomAnchor.constraint(equalTo: textField.topAnchor, constant: -8),
             
+
             textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             textField.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -4),
             textField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4),
             
-            placeholderLabel.bottomAnchor.constraint(equalTo: textField.topAnchor, constant: 8),
-            
-            heightAnchor.constraint(equalToConstant: 60)
         ])
     }
 }

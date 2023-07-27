@@ -51,16 +51,16 @@ private extension AddChildButton {
     }
     
     func configureAppearance() {
-        layer.borderColor = UIColor.blue.cgColor
+        layer.borderColor = UIColor.myBlue.cgColor
         layer.borderWidth = 1
         layer.cornerRadius = 16
         makeSystem(self)
         
-        title.textColor = .blue
-        title.font = .systemFont(ofSize: 24)
+        title.textColor = .myBlue
+        title.font = .systemFont(ofSize: 18)
         title.textAlignment = .center
         
         iconView.image = UIImage(systemName: "plus")
-        iconView.tintColor = .blue
+        iconView.tintColor = .myBlue
     }
 }

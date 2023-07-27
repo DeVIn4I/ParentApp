@@ -14,8 +14,10 @@
 		8655BAFC2A71AEC700BC31B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8655BAFA2A71AEC700BC31B6 /* LaunchScreen.storyboard */; };
 		8655BB0C2A71B01900BC31B6 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8655BB0B2A71B01900BC31B6 /* BaseView.swift */; };
 		8655BB0E2A71B0CF00BC31B6 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8655BB0D2A71B0CF00BC31B6 /* TextField.swift */; };
-		8655BB122A71B18C00BC31B6 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8655BB112A71B18C00BC31B6 /* View+Extension.swift */; };
+		8655BB122A71B18C00BC31B6 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8655BB112A71B18C00BC31B6 /* UIView+Extension.swift */; };
 		8655BB142A71B58B00BC31B6 /* AddChildButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8655BB132A71B58B00BC31B6 /* AddChildButton.swift */; };
+		8655BB162A71BE6E00BC31B6 /* HeaderForTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8655BB152A71BE6E00BC31B6 /* HeaderForTableView.swift */; };
+		8655BB182A72298100BC31B6 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8655BB172A72298100BC31B6 /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +30,10 @@
 		8655BAFD2A71AEC700BC31B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8655BB0B2A71B01900BC31B6 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		8655BB0D2A71B0CF00BC31B6 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
-		8655BB112A71B18C00BC31B6 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		8655BB112A71B18C00BC31B6 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		8655BB132A71B58B00BC31B6 /* AddChildButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChildButton.swift; sourceTree = "<group>"; };
+		8655BB152A71BE6E00BC31B6 /* HeaderForTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForTableView.swift; sourceTree = "<group>"; };
+		8655BB172A72298100BC31B6 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,7 @@
 				8655BB0B2A71B01900BC31B6 /* BaseView.swift */,
 				8655BB0D2A71B0CF00BC31B6 /* TextField.swift */,
 				8655BB132A71B58B00BC31B6 /* AddChildButton.swift */,
+				8655BB152A71BE6E00BC31B6 /* HeaderForTableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -151,7 +156,8 @@
 		8655BB102A71B17A00BC31B6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8655BB112A71B18C00BC31B6 /* View+Extension.swift */,
+				8655BB112A71B18C00BC31B6 /* UIView+Extension.swift */,
+				8655BB172A72298100BC31B6 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -229,8 +235,10 @@
 				8655BAF42A71AEC600BC31B6 /* ParentViewController.swift in Sources */,
 				8655BAF02A71AEC600BC31B6 /* AppDelegate.swift in Sources */,
 				8655BAF22A71AEC600BC31B6 /* SceneDelegate.swift in Sources */,
+				8655BB182A72298100BC31B6 /* UIColor+Extension.swift in Sources */,
 				8655BB0E2A71B0CF00BC31B6 /* TextField.swift in Sources */,
-				8655BB122A71B18C00BC31B6 /* View+Extension.swift in Sources */,
+				8655BB162A71BE6E00BC31B6 /* HeaderForTableView.swift in Sources */,
+				8655BB122A71B18C00BC31B6 /* UIView+Extension.swift in Sources */,
 				8655BB0C2A71B01900BC31B6 /* BaseView.swift in Sources */,
 				8655BB142A71B58B00BC31B6 /* AddChildButton.swift in Sources */,
 			);
