@@ -26,7 +26,7 @@ final class TextField: BaseView {
         label.font = .systemFont(ofSize: 14)
         return label.withConstraints()
     }()
-        
+    
     convenience init(placeholder: String) {
         self.init()
         placeholderLabel.text = placeholder
@@ -36,17 +36,15 @@ final class TextField: BaseView {
         layer.cornerRadius = 6
         layer.borderWidth = 1
         layer.borderColor = UIColor.lightGray.cgColor
-        
         addSubview(placeholderLabel)
         addSubview(textField)
     }
     
     override func constraintViews() {
-        
         NSLayoutConstraint.activate([
             placeholderLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             placeholderLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4),
-
+            
             textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             textField.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -4),
             textField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4),
@@ -54,7 +52,6 @@ final class TextField: BaseView {
             placeholderCenterYConst
         ])
     }
-
     
     @objc private func didChangeText() {
         UIView.animate(withDuration: 0.2) { [self] in

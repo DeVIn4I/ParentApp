@@ -49,7 +49,7 @@ private extension AddChildButton {
     
     func configureAppearance() {
         layer.borderColor = UIColor.myBlue.cgColor
-        layer.borderWidth = 1
+        layer.borderWidth = 2
         layer.cornerRadius = 20
         makeSystem(self)
         

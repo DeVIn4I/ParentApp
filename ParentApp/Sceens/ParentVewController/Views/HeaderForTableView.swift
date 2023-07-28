@@ -12,10 +12,6 @@ final class HeaderForTableView: BaseView {
     private let parentName = TextField(placeholder: "Имя").withConstraints()
     private let parentAge = TextField(placeholder: "Возраст").withConstraints()
     
-    var maxChildCount = 5
-    
-    var addChildAction: (() -> Void)?
-    
     private lazy var parentLabel: UILabel = {
         let label = UILabel()
         label.text = "Персональные данные"
@@ -24,7 +20,7 @@ final class HeaderForTableView: BaseView {
     }()
     
     private lazy var infoParentStackView: UIStackView = {
-       let view = UIStackView()
+        let view = UIStackView()
         view.axis = .vertical
         view.spacing = 10
         view.addArrangedSubview(parentName)
@@ -33,7 +29,7 @@ final class HeaderForTableView: BaseView {
     }()
     
     private lazy var descChildLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "Дети (макс. \(maxChildCount))"
         label.font = .boldSystemFont(ofSize: 18)
         label.textAlignment = .left
@@ -41,14 +37,14 @@ final class HeaderForTableView: BaseView {
     }()
     
     lazy var addChildButton: AddChildButton = {
-       let button = AddChildButton()
+        let button = AddChildButton()
         button.setTitle(" Добавить ребенка")
         button.addTarget(self, action: #selector(didTapAddChildButton), for: .touchUpInside)
         return button.withConstraints()
     }()
     
     private lazy var infoChildStackView: UIStackView = {
-       let view = UIStackView()
+        let view = UIStackView()
         view.axis = .horizontal
         view.spacing = 12
         view.addArrangedSubview(descChildLabel)
@@ -63,12 +59,14 @@ final class HeaderForTableView: BaseView {
         return view.withConstraints()
     }()
     
+    var maxChildCount = 5
+    var addChildAction: (() -> Void)?
+    
     override func setupViews() {
         addSubview(parentLabel)
         addSubview(infoParentStackView)
         addSubview(infoChildStackView)
         addSubview(separatoView)
-        
         backgroundColor = .white
     }
     
@@ -95,7 +93,6 @@ final class HeaderForTableView: BaseView {
             
         ])
     }
-    
     func clearData() {
         parentName.textField.text = nil
         parentAge.textField.text = nil

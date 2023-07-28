@@ -19,32 +19,27 @@ final class FooterForTableView: BaseView {
     
     private lazy var clearButton: UIButton = {
         let button = UIButton()
-         button.setTitle("Очистить", for: .normal)
-         button.setTitleColor(.myRed, for: .normal)
-         button.addTarget(self, action: #selector(didTapClearButton), for: .touchUpInside)
-       
+        button.setTitle("Очистить", for: .normal)
+        button.setTitleColor(.myRed, for: .normal)
+        button.addTarget(self, action: #selector(didTapClearButton), for: .touchUpInside)
         button.layer.cornerRadius = 20
         button.layer.borderColor = UIColor.myRed.cgColor
-        button.layer.borderWidth = 1
-        
+        button.layer.borderWidth = 2
         return button.withConstraints()
     }()
     
     override func setupViews() {
         addSubview(separatoView)
         addSubview(clearButton)
-        
         backgroundColor = .white
     }
     
     override func constraintViews() {
         NSLayoutConstraint.activate([
-            
             separatoView.topAnchor.constraint(equalTo: topAnchor),
             separatoView.leadingAnchor.constraint(equalTo: leadingAnchor),
             separatoView.trailingAnchor.constraint(equalTo: trailingAnchor),
             separatoView.heightAnchor.constraint(equalToConstant: 1),
-            
             
             clearButton.widthAnchor.constraint(equalToConstant: 180),
             clearButton.heightAnchor.constraint(equalToConstant: 40),
@@ -58,6 +53,5 @@ final class FooterForTableView: BaseView {
     @objc func didTapClearButton() {
         clearButtonAction?()
     }
-    
 }
 

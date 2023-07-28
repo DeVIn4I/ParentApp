@@ -11,8 +11,8 @@ class ChildCell: UITableViewCell {
     
     static let reuseID = "childCell"
     
-   private let childName = TextField(placeholder: "Имя")
-    let childAge = TextField(placeholder: "Возраст")
+    private let childName = TextField(placeholder: "Имя")
+    private let childAge = TextField(placeholder: "Возраст")
     
     var deleteChildAction: (() -> Void)?
     
@@ -26,7 +26,7 @@ class ChildCell: UITableViewCell {
     }()
     
     private lazy var deleteChildButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.setTitle("Удалить", for: .normal)
         button.setTitleColor(.myBlue, for: .normal)
         button.addTarget(self, action: #selector(didTapDeleteChildButton), for: .touchUpInside)
@@ -34,14 +34,14 @@ class ChildCell: UITableViewCell {
     }()
     
     private lazy var buttonStackView: UIStackView = {
-       let view = UIStackView()
+        let view = UIStackView()
         view.addArrangedSubview(deleteChildButton)
         view.alignment = .top
         return view.withConstraints()
     }()
     
     private lazy var fullStackView: UIStackView = {
-       let view = UIStackView()
+        let view = UIStackView()
         view.addArrangedSubview(infoChildStackView)
         view.addArrangedSubview(buttonStackView)
         view.axis = .horizontal
@@ -57,11 +57,6 @@ class ChildCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func clear() {
-        childName.textField.text = nil
-        childAge.textField.text = nil
     }
     
     func setupView() {
@@ -83,6 +78,6 @@ class ChildCell: UITableViewCell {
         deleteChildAction?()
     }
 }
-    
-    
+
+
 

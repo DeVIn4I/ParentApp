@@ -40,6 +40,7 @@ class ParentViewController: UIViewController {
             table.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant: 20),
             table.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
+        hideKeyboardWhenTappedAround()
     }
     //MARK: - Methods
     private func showAlert() {
@@ -53,6 +54,7 @@ class ParentViewController: UIViewController {
                     self?.header.clearData()
                     self?.childs = []
                     self?.table.reloadData()
+                    self?.showAddChildButton()
                 }
             let cancelButton = UIAlertAction(title: "Отмена", style: .cancel)
             alert.addAction(clearButton)
@@ -60,6 +62,19 @@ class ParentViewController: UIViewController {
             present(alert, animated: true)
         }
     }
+    
+    private func showAddChildButton() {
+        UIView.animate(withDuration: 0.3) {
+            self.header.addChildButton.alpha = 1
+        }
+    }
+    
+    private func hideAddChildButton() {
+        UIView.animate(withDuration: 0.3) {
+            self.header.addChildButton.alpha = 0
+        }
+    }
+
 }
 //MARK: - ParentViewController: UITableViewDataSource
 extension ParentViewController: UITableViewDataSource {
@@ -72,11 +87,9 @@ extension ParentViewController: UITableViewDataSource {
         cell.deleteChildAction = { [weak self] in
             guard let self else { return }
             if childs.count <= header.maxChildCount {
-                UIView.animate(withDuration: 0.3) {
-                    self.header.addChildButton.alpha = 1
-                }
+                showAddChildButton()
             }
-//            cell.clear()
+//                        cell.clear()
             childs.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.reloadData()
@@ -89,9 +102,7 @@ extension ParentViewController: UITableViewDataSource {
             guard let self else { return }
             
             if childs.count == header.maxChildCount - 1 {
-                UIView.animate(withDuration: 0.3) {
-                    self.header.addChildButton.alpha = 0
-                }
+                hideAddChildButton()
             }
             childs.append(Child())
             tableView.insertRows(at: [IndexPath(row: childs.count-1, section: 0)], with: .fade)
