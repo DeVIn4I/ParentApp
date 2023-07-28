@@ -89,7 +89,6 @@ extension ParentViewController: UITableViewDataSource {
             if childs.count <= header.maxChildCount {
                 showAddChildButton()
             }
-//                        cell.clear()
             childs.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.reloadData()
