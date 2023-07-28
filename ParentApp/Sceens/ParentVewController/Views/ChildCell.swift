@@ -11,7 +11,7 @@ class ChildCell: UITableViewCell {
     
     static let reuseID = "childCell"
     
-    let childName = TextField(placeholder: "Имя")
+   private let childName = TextField(placeholder: "Имя")
     let childAge = TextField(placeholder: "Возраст")
     
     var deleteChildAction: (() -> Void)?
@@ -60,8 +60,8 @@ class ChildCell: UITableViewCell {
     }
     
     func clear() {
-        childName.textField.text = ""
-        childAge.textField.text = ""
+        childName.textField.text = nil
+        childAge.textField.text = nil
     }
     
     func setupView() {
@@ -73,8 +73,8 @@ class ChildCell: UITableViewCell {
             buttonStackView.widthAnchor.constraint(equalTo: deleteChildButton.widthAnchor),
             
             fullStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            fullStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            fullStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            fullStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            fullStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             fullStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
         ])
     }
@@ -82,7 +82,6 @@ class ChildCell: UITableViewCell {
     @objc func didTapDeleteChildButton() {
         deleteChildAction?()
     }
-    
 }
     
     

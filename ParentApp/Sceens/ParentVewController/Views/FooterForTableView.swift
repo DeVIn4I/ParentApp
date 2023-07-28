@@ -46,7 +46,7 @@ final class FooterForTableView: BaseView {
             separatoView.heightAnchor.constraint(equalToConstant: 1),
             
             
-            clearButton.widthAnchor.constraint(equalToConstant: 240),
+            clearButton.widthAnchor.constraint(equalToConstant: 180),
             clearButton.heightAnchor.constraint(equalToConstant: 40),
             clearButton.topAnchor.constraint(equalTo: topAnchor, constant: 12),
             clearButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),

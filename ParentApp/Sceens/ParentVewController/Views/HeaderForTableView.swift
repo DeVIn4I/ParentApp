@@ -75,8 +75,8 @@ final class HeaderForTableView: BaseView {
     override func constraintViews() {
         NSLayoutConstraint.activate([
             parentLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12),
-            parentLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            parentLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            parentLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            parentLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             
             infoParentStackView.topAnchor.constraint(equalTo: parentLabel.bottomAnchor, constant: 10),
             infoParentStackView.leadingAnchor.constraint(equalTo: parentLabel.leadingAnchor),

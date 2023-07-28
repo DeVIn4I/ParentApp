@@ -8,18 +8,18 @@
 import UIKit
 
 class ParentViewController: UIViewController {
-    
+    //MARK: - Properties
     private let header = HeaderForTableView()
     private let footer = FooterForTableView()
-    
-    private let alertModel = AlertModel(title: "Очистить форму", message: "Удалить все записи?", buttonText: "Очистить") {
-        print(123)
-    }
-    
+    private let alertModel = AlertModel(
+        title: "Очистить форму",
+        message: "Удалить все записи?",
+        buttonText: "Очистить"
+    )
     var childs: [Child] = []
-        
+    
     private lazy var table: UITableView = {
-       let view = UITableView()
+        let view = UITableView()
         view.register(ChildCell.self, forCellReuseIdentifier: ChildCell.reuseID)
         view.dataSource = self
         view.delegate = self
@@ -27,9 +27,10 @@ class ParentViewController: UIViewController {
         view.allowsSelection = false
         return view.withConstraints()
     }()
-    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        showAlert()
         view.backgroundColor = .white
         view.addSubview(table)
         
@@ -39,7 +40,9 @@ class ParentViewController: UIViewController {
             table.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant: 20),
             table.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
-        
+    }
+    //MARK: - Methods
+    private func showAlert() {
         footer.clearButtonAction = { [weak self] in
             guard let self else { return }
             let alert = UIAlertController(
@@ -47,7 +50,6 @@ class ParentViewController: UIViewController {
                 message: alertModel.message, preferredStyle: .actionSheet)
             let clearButton = UIAlertAction(
                 title: alertModel.buttonText, style: .destructive) { [weak self] _ in
-                    
                     self?.header.clearData()
                     self?.childs = []
                     self?.table.reloadData()
@@ -59,7 +61,7 @@ class ParentViewController: UIViewController {
         }
     }
 }
-
+//MARK: - ParentViewController: UITableViewDataSource
 extension ParentViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return childs.count
@@ -67,7 +69,6 @@ extension ParentViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ChildCell.reuseID) as! ChildCell
-        
         cell.deleteChildAction = { [weak self] in
             guard let self else { return }
             if childs.count <= header.maxChildCount {
@@ -75,22 +76,19 @@ extension ParentViewController: UITableViewDataSource {
                     self.header.addChildButton.alpha = 1
                 }
             }
-            cell.clear()
+//            cell.clear()
             childs.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.reloadData()
         }
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
         header.addChildAction = { [weak self] in
             guard let self else { return }
             
             if childs.count == header.maxChildCount - 1 {
-                
                 UIView.animate(withDuration: 0.3) {
                     self.header.addChildButton.alpha = 0
                 }
@@ -106,12 +104,6 @@ extension ParentViewController: UITableViewDataSource {
         !childs.isEmpty ? footer : nil
     }
 }
-
-extension ParentViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 150
-//    }
-
-
-}
+//MARK: - ParentViewController: UITableViewDelegate
+extension ParentViewController: UITableViewDelegate {}
 

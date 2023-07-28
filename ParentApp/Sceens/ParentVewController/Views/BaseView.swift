@@ -14,7 +14,6 @@ class BaseView: UIView {
         
         setupViews()
         constraintViews()
-        configureAppearance()
     }
     
     required init?(coder: NSCoder) {
@@ -24,6 +23,5 @@ class BaseView: UIView {
     
     func setupViews() {}
     func constraintViews() {}
-    func configureAppearance() {}
 }
 

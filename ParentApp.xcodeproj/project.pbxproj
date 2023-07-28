@@ -74,9 +74,9 @@
 		8655BAEE2A71AEC600BC31B6 /* ParentApp */ = {
 			isa = PBXGroup;
 			children = (
+				8655BB042A71AF1E00BC31B6 /* App */,
 				8655BB0F2A71B16D00BC31B6 /* Resources */,
 				8655BB052A71AF6400BC31B6 /* Sceens */,
-				8655BB042A71AF1E00BC31B6 /* App */,
 				8655BB032A71AED700BC31B6 /* SupportingFiles */,
 			);
 			path = ParentApp;
@@ -103,8 +103,8 @@
 		8655BB052A71AF6400BC31B6 /* Sceens */ = {
 			isa = PBXGroup;
 			children = (
-				8655BB072A71AF7800BC31B6 /* ParentVewController */,
 				8655BB062A71AF6D00BC31B6 /* Launch */,
+				8655BB072A71AF7800BC31B6 /* ParentVewController */,
 			);
 			path = Sceens;
 			sourceTree = "<group>";
@@ -130,12 +130,12 @@
 		8655BB092A71AF9100BC31B6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8655BB0B2A71B01900BC31B6 /* BaseView.swift */,
-				8655BB0D2A71B0CF00BC31B6 /* TextField.swift */,
 				8655BB132A71B58B00BC31B6 /* AddChildButton.swift */,
-				8655BB152A71BE6E00BC31B6 /* HeaderForTableView.swift */,
+				8655BB0B2A71B01900BC31B6 /* BaseView.swift */,
 				8655BB192A722AEF00BC31B6 /* ChildCell.swift */,
 				86CE49682A73C83400F8B2B9 /* FooterForTableView.swift */,
+				8655BB152A71BE6E00BC31B6 /* HeaderForTableView.swift */,
+				8655BB0D2A71B0CF00BC31B6 /* TextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -159,8 +159,8 @@
 		8655BB102A71B17A00BC31B6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8655BB112A71B18C00BC31B6 /* UIView+Extension.swift */,
 				8655BB172A72298100BC31B6 /* UIColor+Extension.swift */,
+				8655BB112A71B18C00BC31B6 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -168,8 +168,8 @@
 		86CE49672A73B4DD00F8B2B9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				86CE49602A72823000F8B2B9 /* ChildModel.swift */,
 				86CE496A2A73CD6000F8B2B9 /* AlertModel.swift */,
+				86CE49602A72823000F8B2B9 /* ChildModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

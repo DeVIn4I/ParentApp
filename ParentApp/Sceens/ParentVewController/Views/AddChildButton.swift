@@ -27,17 +27,14 @@ final class AddChildButton: UIButton {
     func setTitle(_ text: String) {
         title.text = text
     }
-    
 }
 
 private extension AddChildButton {
     func setupViews() {
-        
         addSubview(title)
         addSubview(iconView)
     }
     func constraintViews() {
-        
         NSLayoutConstraint.activate([
             iconView.centerYAnchor.constraint(equalTo: centerYAnchor),
             iconView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
