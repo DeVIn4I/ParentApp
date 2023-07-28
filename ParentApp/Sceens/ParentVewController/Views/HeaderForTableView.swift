@@ -40,7 +40,7 @@ final class HeaderForTableView: BaseView {
         return label.withConstraints()
     }()
     
-    private lazy var addChildButton: AddChildButton = {
+    lazy var addChildButton: AddChildButton = {
        let button = AddChildButton()
         button.setTitle(" Добавить ребенка")
         button.addTarget(self, action: #selector(didTapAddChildButton), for: .touchUpInside)
@@ -50,9 +50,16 @@ final class HeaderForTableView: BaseView {
     private lazy var infoChildStackView: UIStackView = {
        let view = UIStackView()
         view.axis = .horizontal
+        view.spacing = 12
         view.addArrangedSubview(descChildLabel)
         view.addArrangedSubview(addChildButton)
         view.alignment = .fill
+        return view.withConstraints()
+    }()
+    
+    private lazy var separatoView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .separator
         return view.withConstraints()
     }()
     
@@ -60,6 +67,9 @@ final class HeaderForTableView: BaseView {
         addSubview(parentLabel)
         addSubview(infoParentStackView)
         addSubview(infoChildStackView)
+        addSubview(separatoView)
+        
+        backgroundColor = .white
     }
     
     override func constraintViews() {
@@ -76,8 +86,19 @@ final class HeaderForTableView: BaseView {
             infoChildStackView.leadingAnchor.constraint(equalTo: parentLabel.leadingAnchor),
             infoChildStackView.trailingAnchor.constraint(equalTo: parentLabel.trailingAnchor),
             infoChildStackView.heightAnchor.constraint(equalToConstant: 40),
-            infoChildStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 10)
+            infoChildStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
+            
+            separatoView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            separatoView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            separatoView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            separatoView.heightAnchor.constraint(equalToConstant: 1)
+            
         ])
+    }
+    
+    func clearData() {
+        parentName.textField.text = nil
+        parentAge.textField.text = nil
     }
     
     @objc func didTapAddChildButton() {
