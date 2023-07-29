@@ -8,7 +8,7 @@
 import UIKit
 
 final class HeaderForTableView: BaseView {
-    
+    //MARK: - Private properties
     private let parentName = TextField(placeholder: "Имя").withConstraints()
     private let parentAge = TextField(placeholder: "Возраст").withConstraints()
     
@@ -38,7 +38,7 @@ final class HeaderForTableView: BaseView {
         return label.withConstraints()
     }()
     
-    lazy var addChildButton: AddChildButton = {
+    private lazy var addChildButton: AddChildButton = {
         let button = AddChildButton()
         button.setTitle(" Добавить ребенка")
         button.addTarget(self, action: #selector(didTapAddChildButton), for: .touchUpInside)
@@ -60,10 +60,15 @@ final class HeaderForTableView: BaseView {
         view.backgroundColor = .separator
         return view.withConstraints()
     }()
+    //MARK: - Properties
+    var addChildAlpha: CGFloat {
+        get { addChildButton.alpha }
+        set { addChildButton.alpha = newValue }
+    }
     
     var maxChildCount = 5
     var addChildAction: (() -> Void)?
-    
+    //MARK: - Methods
     override func setupViews() {
         addSubview(parentLabel)
         addSubview(infoParentStackView)
@@ -93,7 +98,6 @@ final class HeaderForTableView: BaseView {
             separatoView.leadingAnchor.constraint(equalTo: leadingAnchor),
             separatoView.trailingAnchor.constraint(equalTo: trailingAnchor),
             separatoView.heightAnchor.constraint(equalToConstant: 1)
-            
         ])
     }
     func clearData() {

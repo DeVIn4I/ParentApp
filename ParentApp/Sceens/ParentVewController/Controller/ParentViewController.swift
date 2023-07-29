@@ -9,7 +9,7 @@ import UIKit
 
 class ParentViewController: UIViewController {
     //MARK: - Properties
-    private let header = HeaderForTableView()
+    private let header = HeaderForTableView().withConstraints()
     private let footer = FooterForTableView()
     private let alertModel = AlertModel(
         title: "Очистить форму",
@@ -34,13 +34,18 @@ class ParentViewController: UIViewController {
         super.viewDidLoad()
         setupActions()
         view.backgroundColor = .white
+        view.addSubview(header)
         view.addSubview(table)
         
         NSLayoutConstraint.activate([
-            table.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            table.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            table.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            table.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+            header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            header.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            header.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+
+            table.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            table.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            table.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20),
+            table.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         hideKeyboardWhenTappedAround()
     }
@@ -64,13 +69,13 @@ class ParentViewController: UIViewController {
     
     private func showAddChildButton() {
         UIView.animate(withDuration: 0.3) {
-            self.header.addChildButton.alpha = 1
+            self.header.addChildAlpha = 1
         }
     }
     
     private func hideAddChildButton() {
         UIView.animate(withDuration: 0.3) {
-            self.header.addChildButton.alpha = 0
+            self.header.addChildAlpha = 0
         }
     }
     
@@ -82,21 +87,17 @@ class ParentViewController: UIViewController {
             if parentOne.childs.count == header.maxChildCount - 1 {
                 hideAddChildButton()
             }
-            
-            UIView.setAnimationsEnabled(false)
             table.beginUpdates()
             parentOne.childs.append(Child())
+            table.insertRows(at: [IndexPath(row: parentOne.childs.count - 1, section: 0)], with: .fade)
             table.reloadSections(IndexSet(integer: 0), with: .fade)
             table.endUpdates()
-            UIView.setAnimationsEnabled(true)
         }
-        
         footer.clearButtonAction = { [weak self] in
             guard let self else { return }
             showAlert()
         }
     }
-
 }
 //MARK: - ParentViewController: UITableViewDataSource
 extension ParentViewController: UITableViewDataSource {
@@ -119,23 +120,14 @@ extension ParentViewController: UITableViewDataSource {
             if parentOne.childs.count <= header.maxChildCount {
                 showAddChildButton()
             }
-
             guard let index = tableView.indexPath(for: cell) else { return }
-            
-            UIView.setAnimationsEnabled(false)
             table.beginUpdates()
             parentOne.childs.remove(at: index.row)
+            table.deleteRows(at: [indexPath], with: .fade)
             table.reloadSections(IndexSet(integer: 0), with: .fade)
             table.endUpdates()
-            UIView.setAnimationsEnabled(true)
-
         }
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-       
-        return header
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

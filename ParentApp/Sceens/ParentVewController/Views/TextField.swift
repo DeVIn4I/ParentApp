@@ -29,22 +29,15 @@ final class TextField: BaseView {
     }()
     //MARK: - Interface
     var text: String? {
-        get {
-            textField.text
-        }
-        set {
-            textField.text = newValue
+        get { textField.text }
+        set { textField.text = newValue
             animatePlaceholder()
         }
     }
     
     var keyboardType: UIKeyboardType {
-        get {
-            textField.keyboardType
-        }
-        set {
-            textField.keyboardType = newValue
-        }
+        get { textField.keyboardType }
+        set { textField.keyboardType = newValue }
     }
     
     var didEditingChanged: ((String?) -> Void)?
