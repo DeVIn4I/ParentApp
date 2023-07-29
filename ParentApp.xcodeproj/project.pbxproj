@@ -24,6 +24,7 @@
 		86CE49692A73C83400F8B2B9 /* FooterForTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE49682A73C83400F8B2B9 /* FooterForTableView.swift */; };
 		86CE496B2A73CD6000F8B2B9 /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE496A2A73CD6000F8B2B9 /* AlertModel.swift */; };
 		86CE496F2A73E97E00F8B2B9 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE496E2A73E97E00F8B2B9 /* UIViewController+Extension.swift */; };
+		86D68F792A759A54000AAF2E /* Haptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D68F782A759A54000AAF2E /* Haptic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		86CE49682A73C83400F8B2B9 /* FooterForTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterForTableView.swift; sourceTree = "<group>"; };
 		86CE496A2A73CD6000F8B2B9 /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
 		86CE496E2A73E97E00F8B2B9 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		86D68F782A759A54000AAF2E /* Haptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 				8655BB172A72298100BC31B6 /* UIColor+Extension.swift */,
 				8655BB112A71B18C00BC31B6 /* UIView+Extension.swift */,
 				86CE496E2A73E97E00F8B2B9 /* UIViewController+Extension.swift */,
+				86D68F782A759A54000AAF2E /* Haptic.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86D68F792A759A54000AAF2E /* Haptic.swift in Sources */,
 				86CE49692A73C83400F8B2B9 /* FooterForTableView.swift in Sources */,
 				862EB4922A7553C100DCED7A /* ParentModel.swift in Sources */,
 				86CE496B2A73CD6000F8B2B9 /* AlertModel.swift in Sources */,

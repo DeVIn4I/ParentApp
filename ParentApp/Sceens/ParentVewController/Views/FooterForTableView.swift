@@ -51,6 +51,7 @@ final class FooterForTableView: BaseView {
     }
     
     @objc func didTapClearButton() {
+        Haptic.impact(.heavy)
         clearButtonAction?()
     }
 }

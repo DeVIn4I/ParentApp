@@ -115,6 +115,7 @@ class ChildCell: UITableViewCell {
     }
     
     @objc func didTapDeleteChildButton() {
+        Haptic.impact(.medium)
         deleteChildAction?()
     }
 }

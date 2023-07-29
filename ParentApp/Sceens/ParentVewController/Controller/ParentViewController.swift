@@ -51,8 +51,8 @@ class ParentViewController: UIViewController {
                 message: alertModel.message, preferredStyle: .actionSheet)
             let clearButton = UIAlertAction(
                 title: alertModel.buttonText, style: .destructive) { [weak self] _ in
-//                    self?.header.clearData()
-//                    self?.parentOne.childs = []
+                    self?.header.clearData()
+                    self?.parentOne.childs = []
                     self?.table.reloadData()
                     self?.showAddChildButton()
                 }

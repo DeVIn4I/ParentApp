@@ -96,12 +96,13 @@ final class HeaderForTableView: BaseView {
             
         ])
     }
-//    func clearData() {
-//        parentName.textField.text = nil
-//        parentAge.textField.text = nil
-//    }
+    func clearData() {
+        parentName.text = nil
+        parentAge.text = nil
+    }
     
     @objc func didTapAddChildButton() {
+        Haptic.impact(.light)
         addChildAction?()
     }
 }
