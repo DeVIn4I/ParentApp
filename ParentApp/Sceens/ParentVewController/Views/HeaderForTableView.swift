@@ -60,14 +60,15 @@ final class HeaderForTableView: BaseView {
         view.backgroundColor = .separator
         return view.withConstraints()
     }()
+    
     //MARK: - Properties
     var addChildAlpha: CGFloat {
         get { addChildButton.alpha }
         set { addChildButton.alpha = newValue }
     }
-    
     var maxChildCount = 5
     var addChildAction: (() -> Void)?
+    
     //MARK: - Methods
     override func setupViews() {
         addSubview(parentLabel)

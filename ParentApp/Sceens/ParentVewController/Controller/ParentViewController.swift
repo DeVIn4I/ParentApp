@@ -8,17 +8,16 @@
 import UIKit
 
 class ParentViewController: UIViewController {
-    //MARK: - Properties
+    //MARK: - Private Properties
     private let header = HeaderForTableView().withConstraints()
     private let footer = FooterForTableView().withConstraints()
+    private var parentOne: Parent = Parent()
     
     private let alertModel = AlertModel(
         title: "Очистить форму",
         message: "Удалить все записи?",
         buttonText: "Очистить"
     )
-    
-    var parentOne: Parent = Parent()
     
     private lazy var table: UITableView = {
         let view = UITableView()
@@ -30,6 +29,8 @@ class ParentViewController: UIViewController {
         view.allowsSelection = false
         return view.withConstraints()
     }()
+    
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,7 @@ class ParentViewController: UIViewController {
             header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             header.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             header.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-
+            
             table.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             table.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             table.topAnchor.constraint(equalTo: header.bottomAnchor),
@@ -52,28 +53,26 @@ class ParentViewController: UIViewController {
             footer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             footer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             footer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-            
-            
         ])
         hideKeyboardWhenTappedAround()
     }
     //MARK: - Methods
     private func showAlert() {
-            let alert = UIAlertController(
-                title: alertModel.title,
-                message: alertModel.message, preferredStyle: .actionSheet)
-            let clearButton = UIAlertAction(
-                title: alertModel.buttonText, style: .destructive) { [weak self] _ in
-                    self?.header.clearData()
-                    self?.parentOne.childs = []
-                    self?.table.reloadData()
-                    self?.showAddChildButton()
-                }
-            let cancelButton = UIAlertAction(title: "Отмена", style: .cancel)
-            alert.addAction(clearButton)
-            alert.addAction(cancelButton)
-            present(alert, animated: true)
-        }
+        let alert = UIAlertController(
+            title: alertModel.title,
+            message: alertModel.message, preferredStyle: .actionSheet)
+        let clearButton = UIAlertAction(
+            title: alertModel.buttonText, style: .destructive) { [weak self] _ in
+                self?.header.clearData()
+                self?.parentOne.childs = []
+                self?.table.reloadData()
+                self?.showAddChildButton()
+            }
+        let cancelButton = UIAlertAction(title: "Отмена", style: .cancel)
+        alert.addAction(clearButton)
+        alert.addAction(cancelButton)
+        present(alert, animated: true)
+    }
     
     private func showAddChildButton() {
         UIView.animate(withDuration: 0.3) {
@@ -91,7 +90,6 @@ class ParentViewController: UIViewController {
         //MARK: - HeaderAction
         header.addChildAction = { [weak self] in
             guard let self else { return }
-            
             if parentOne.childs.count == header.maxChildCount - 1 {
                 hideAddChildButton()
             }
@@ -115,16 +113,12 @@ extension ParentViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ChildCell.reuseID) as! ChildCell
-        
         cell.render(parentOne.childs[indexPath.row])
-        
-        
         cell.didChangeChild = { [weak self] child in
             guard let child, let self else { return }
             guard let index = tableView.indexPath(for: cell)?.row else { return }
             parentOne.childs[index] = child
         }
-        
         cell.deleteChildAction = { [weak self] in
             guard let self else { return }
             if parentOne.childs.count <= header.maxChildCount {
@@ -139,10 +133,6 @@ extension ParentViewController: UITableViewDataSource {
         }
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        !parentOne.childs.isEmpty ? footer : nil
-//    }
 }
 //MARK: - ParentViewController: UITableViewDelegate
 extension ParentViewController: UITableViewDelegate {}

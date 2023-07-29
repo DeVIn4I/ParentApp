@@ -9,8 +9,6 @@ import UIKit
 
 final class FooterForTableView: BaseView {
     
-    var clearButtonAction: (() -> Void)?
-    
     private lazy var separatoView: UIView = {
         let view = UIView()
         view.backgroundColor = .separator
@@ -27,6 +25,8 @@ final class FooterForTableView: BaseView {
         button.layer.borderWidth = 2
         return button.withConstraints()
     }()
+    
+    var clearButtonAction: (() -> Void)?
     
     override func setupViews() {
         addSubview(separatoView)

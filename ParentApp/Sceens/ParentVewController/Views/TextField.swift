@@ -8,7 +8,7 @@
 import UIKit
 
 final class TextField: BaseView {
-    
+    //MARK: - Private Properties
     private lazy var placeholderCenterYConst: NSLayoutConstraint = placeholderLabel.centerYAnchor.constraint(equalTo: textField.centerYAnchor)
     
     private lazy var textField: UITextField = {
@@ -17,7 +17,7 @@ final class TextField: BaseView {
         textField.font = .systemFont(ofSize: 18)
         textField.borderStyle = .none
         textField.clearButtonMode = .whileEditing
-        textField.addTarget(self, action: #selector(didChangeText), for: .editingChanged)
+        textField.addTarget(self, action: #selector(didChangeText), for: .editingChanged)        
         return textField.withConstraints()
     }()
     
@@ -42,11 +42,13 @@ final class TextField: BaseView {
     
     var didEditingChanged: ((String?) -> Void)?
     
+    var testCall: (() -> Void)?
+    
     convenience init(placeholder: String) {
         self.init()
         placeholderLabel.text = placeholder
     }
-    
+    //MARK: - Methods
     override func setupViews() {
         layer.cornerRadius = 6
         layer.borderWidth = 1
@@ -68,7 +70,7 @@ final class TextField: BaseView {
         ])
     }
     
-    func animatePlaceholder() {
+    private func animatePlaceholder() {
         UIView.animate(withDuration: 0.2) { [self] in
             placeholderCenterYConst.constant = textField.text?.isEmpty == true ? 0 : -24
             layoutIfNeeded()

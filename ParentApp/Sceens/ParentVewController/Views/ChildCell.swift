@@ -9,8 +9,6 @@ import UIKit
 
 class ChildCell: UITableViewCell {
     
-    static let reuseID = "childCell"
-    
     private let childName = TextField(placeholder: "Имя")
     private let childAge = TextField(placeholder: "Возраст")
     
