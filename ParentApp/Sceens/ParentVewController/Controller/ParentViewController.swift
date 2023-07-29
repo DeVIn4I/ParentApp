@@ -10,7 +10,8 @@ import UIKit
 class ParentViewController: UIViewController {
     //MARK: - Properties
     private let header = HeaderForTableView().withConstraints()
-    private let footer = FooterForTableView()
+    private let footer = FooterForTableView().withConstraints()
+    
     private let alertModel = AlertModel(
         title: "Очистить форму",
         message: "Удалить все записи?",
@@ -36,6 +37,7 @@ class ParentViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(header)
         view.addSubview(table)
+        view.addSubview(footer)
         
         NSLayoutConstraint.activate([
             header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
@@ -44,8 +46,14 @@ class ParentViewController: UIViewController {
 
             table.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             table.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            table.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20),
-            table.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            table.topAnchor.constraint(equalTo: header.bottomAnchor),
+            
+            footer.topAnchor.constraint(equalTo: table.bottomAnchor),
+            footer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            footer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            footer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            
+            
         ])
         hideKeyboardWhenTappedAround()
     }
@@ -88,8 +96,8 @@ class ParentViewController: UIViewController {
                 hideAddChildButton()
             }
             table.beginUpdates()
-            parentOne.childs.append(Child())
-            table.insertRows(at: [IndexPath(row: parentOne.childs.count - 1, section: 0)], with: .fade)
+            parentOne.childs.insert(Child(), at: 0)
+            table.insertRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
             table.reloadSections(IndexSet(integer: 0), with: .fade)
             table.endUpdates()
         }
@@ -109,6 +117,8 @@ extension ParentViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: ChildCell.reuseID) as! ChildCell
         
         cell.render(parentOne.childs[indexPath.row])
+        
+        
         cell.didChangeChild = { [weak self] child in
             guard let child, let self else { return }
             guard let index = tableView.indexPath(for: cell)?.row else { return }
@@ -130,9 +140,9 @@ extension ParentViewController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        !parentOne.childs.isEmpty ? footer : nil
-    }
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        !parentOne.childs.isEmpty ? footer : nil
+//    }
 }
 //MARK: - ParentViewController: UITableViewDelegate
 extension ParentViewController: UITableViewDelegate {}
