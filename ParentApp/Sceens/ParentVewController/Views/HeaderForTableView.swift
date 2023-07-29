@@ -14,6 +14,7 @@ final class HeaderForTableView: BaseView {
     
     private lazy var parentLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .black
         label.text = "Персональные данные"
         label.font = .boldSystemFont(ofSize: 20)
         return label.withConstraints()
@@ -30,6 +31,7 @@ final class HeaderForTableView: BaseView {
     
     private lazy var descChildLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .black
         label.text = "Дети (макс. \(maxChildCount))"
         label.font = .boldSystemFont(ofSize: 18)
         label.textAlignment = .left
@@ -68,6 +70,7 @@ final class HeaderForTableView: BaseView {
         addSubview(infoChildStackView)
         addSubview(separatoView)
         backgroundColor = .white
+        parentAge.keyboardType = .numberPad
     }
     
     override func constraintViews() {
@@ -93,10 +96,10 @@ final class HeaderForTableView: BaseView {
             
         ])
     }
-    func clearData() {
-        parentName.textField.text = nil
-        parentAge.textField.text = nil
-    }
+//    func clearData() {
+//        parentName.textField.text = nil
+//        parentAge.textField.text = nil
+//    }
     
     @objc func didTapAddChildButton() {
         addChildAction?()

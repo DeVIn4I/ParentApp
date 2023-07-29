@@ -16,10 +16,12 @@ class ParentViewController: UIViewController {
         message: "Удалить все записи?",
         buttonText: "Очистить"
     )
-    var childs: [Child] = []
+    
+    var parentOne: Parent = Parent()
     
     private lazy var table: UITableView = {
         let view = UITableView()
+        view.backgroundColor = .clear
         view.register(ChildCell.self, forCellReuseIdentifier: ChildCell.reuseID)
         view.dataSource = self
         view.delegate = self
@@ -30,7 +32,7 @@ class ParentViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        showAlert()
+        setupActions()
         view.backgroundColor = .white
         view.addSubview(table)
         
@@ -44,15 +46,13 @@ class ParentViewController: UIViewController {
     }
     //MARK: - Methods
     private func showAlert() {
-        footer.clearButtonAction = { [weak self] in
-            guard let self else { return }
             let alert = UIAlertController(
                 title: alertModel.title,
                 message: alertModel.message, preferredStyle: .actionSheet)
             let clearButton = UIAlertAction(
                 title: alertModel.buttonText, style: .destructive) { [weak self] _ in
-                    self?.header.clearData()
-                    self?.childs = []
+//                    self?.header.clearData()
+//                    self?.parentOne.childs = []
                     self?.table.reloadData()
                     self?.showAddChildButton()
                 }
@@ -61,7 +61,6 @@ class ParentViewController: UIViewController {
             alert.addAction(cancelButton)
             present(alert, animated: true)
         }
-    }
     
     private func showAddChildButton() {
         UIView.animate(withDuration: 0.3) {
@@ -74,44 +73,73 @@ class ParentViewController: UIViewController {
             self.header.addChildButton.alpha = 0
         }
     }
+    
+    func setupActions() {
+        //MARK: - HeaderAction
+        header.addChildAction = { [weak self] in
+            guard let self else { return }
+            
+            if parentOne.childs.count == header.maxChildCount - 1 {
+                hideAddChildButton()
+            }
+            
+            UIView.setAnimationsEnabled(false)
+            table.beginUpdates()
+            parentOne.childs.append(Child())
+            table.reloadSections(IndexSet(integer: 0), with: .fade)
+            table.endUpdates()
+            UIView.setAnimationsEnabled(true)
+        }
+        
+        footer.clearButtonAction = { [weak self] in
+            guard let self else { return }
+            showAlert()
+        }
+    }
 
 }
 //MARK: - ParentViewController: UITableViewDataSource
 extension ParentViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return childs.count
+        return parentOne.childs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ChildCell.reuseID) as! ChildCell
+        
+        cell.render(parentOne.childs[indexPath.row])
+        cell.didChangeChild = { [weak self] child in
+            guard let child, let self else { return }
+            guard let index = tableView.indexPath(for: cell)?.row else { return }
+            parentOne.childs[index] = child
+        }
+        
         cell.deleteChildAction = { [weak self] in
             guard let self else { return }
-            if childs.count <= header.maxChildCount {
+            if parentOne.childs.count <= header.maxChildCount {
                 showAddChildButton()
             }
-            childs.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.reloadData()
+
+            guard let index = tableView.indexPath(for: cell) else { return }
+            
+            UIView.setAnimationsEnabled(false)
+            table.beginUpdates()
+            parentOne.childs.remove(at: index.row)
+            table.reloadSections(IndexSet(integer: 0), with: .fade)
+            table.endUpdates()
+            UIView.setAnimationsEnabled(true)
+
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        header.addChildAction = { [weak self] in
-            guard let self else { return }
-            
-            if childs.count == header.maxChildCount - 1 {
-                hideAddChildButton()
-            }
-            childs.append(Child())
-            tableView.insertRows(at: [IndexPath(row: childs.count-1, section: 0)], with: .fade)
-            tableView.reloadData()
-        }
+       
         return header
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        !childs.isEmpty ? footer : nil
+        !parentOne.childs.isEmpty ? footer : nil
     }
 }
 //MARK: - ParentViewController: UITableViewDelegate

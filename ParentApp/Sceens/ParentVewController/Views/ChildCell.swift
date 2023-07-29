@@ -50,17 +50,31 @@ class ChildCell: UITableViewCell {
         return view.withConstraints()
     }()
     
+    private var child: Child?
+    
+    var didChangeChild: ((Child?) -> Void)?
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
+        setupActions()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupView() {
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        childName.text = nil
+        childAge.text = nil
+    }
+    
+    private func setupView() {
         contentView.addSubview(fullStackView)
+        backgroundColor = .white
+        
+        childAge.keyboardType = .numberPad
         
         NSLayoutConstraint.activate([
             deleteChildButton.widthAnchor.constraint(equalToConstant: 120),
@@ -72,6 +86,32 @@ class ChildCell: UITableViewCell {
             fullStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             fullStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
         ])
+    }
+    
+    func setupActions() {
+        childName.didEditingChanged = { [weak self] text in
+            guard let self else { return }
+            child?.name = text
+            didChangeChild?(child)
+        }
+        childAge.didEditingChanged = { [weak self] text in
+            guard
+                let self,
+                let text,
+                let age = Int(text)
+            else { return }
+            child?.age = age
+            didChangeChild?(child)
+        }
+    }
+    
+    func render(_ model: Child) {
+        child = model
+        childName.text = model.name
+        
+        if let age = model.age {
+            childAge.text = String(age)
+        }
     }
     
     @objc func didTapDeleteChildButton() {

@@ -11,8 +11,9 @@ final class TextField: BaseView {
     
     private lazy var placeholderCenterYConst: NSLayoutConstraint = placeholderLabel.centerYAnchor.constraint(equalTo: textField.centerYAnchor)
     
-    lazy var textField: UITextField = {
+    private lazy var textField: UITextField = {
         let textField = UITextField()
+        textField.textColor = .black
         textField.font = .systemFont(ofSize: 18)
         textField.borderStyle = .none
         textField.clearButtonMode = .whileEditing
@@ -26,6 +27,27 @@ final class TextField: BaseView {
         label.font = .systemFont(ofSize: 14)
         return label.withConstraints()
     }()
+    //MARK: - Interface
+    var text: String? {
+        get {
+            textField.text
+        }
+        set {
+            textField.text = newValue
+            animatePlaceholder()
+        }
+    }
+    
+    var keyboardType: UIKeyboardType {
+        get {
+            textField.keyboardType
+        }
+        set {
+            textField.keyboardType = newValue
+        }
+    }
+    
+    var didEditingChanged: ((String?) -> Void)?
     
     convenience init(placeholder: String) {
         self.init()
@@ -53,10 +75,15 @@ final class TextField: BaseView {
         ])
     }
     
-    @objc private func didChangeText() {
+    func animatePlaceholder() {
         UIView.animate(withDuration: 0.2) { [self] in
             placeholderCenterYConst.constant = textField.text?.isEmpty == true ? 0 : -24
             layoutIfNeeded()
         }
+    }
+    
+    @objc private func didChangeText(_ textFiedl: UITextField) {
+        didEditingChanged?(textFiedl.text)
+        animatePlaceholder()
     }
 }

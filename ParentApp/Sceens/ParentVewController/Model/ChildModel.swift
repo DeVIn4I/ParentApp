@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Child {
-    var name: String = ""
-    var age: String = ""
+struct Child {
+    var name: String?
+    var age: Int?
 }
