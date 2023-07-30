@@ -83,8 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				8655BB042A71AF1E00BC31B6 /* App */,
-				8655BB0F2A71B16D00BC31B6 /* Helpers */,
 				8655BB052A71AF6400BC31B6 /* Sceens */,
+				8655BB0F2A71B16D00BC31B6 /* Helpers */,
 				8655BB032A71AED700BC31B6 /* SupportingFiles */,
 			);
 			path = ParentApp;
@@ -111,7 +111,6 @@
 		8655BB052A71AF6400BC31B6 /* Sceens */ = {
 			isa = PBXGroup;
 			children = (
-				8655BB062A71AF6D00BC31B6 /* Launch */,
 				8655BB072A71AF7800BC31B6 /* ParentVewController */,
 			);
 			path = Sceens;
@@ -131,6 +130,7 @@
 				86CE49672A73B4DD00F8B2B9 /* Model */,
 				8655BB092A71AF9100BC31B6 /* Views */,
 				8655BB0A2A71AF9800BC31B6 /* Controller */,
+				8655BB062A71AF6D00BC31B6 /* Launch */,
 			);
 			path = ParentVewController;
 			sourceTree = "<group>";
