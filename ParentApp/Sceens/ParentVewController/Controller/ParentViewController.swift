@@ -30,7 +30,6 @@ class ParentViewController: UIViewController {
         return view.withConstraints()
     }()
     
-    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
